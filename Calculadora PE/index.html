@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponto de Equilíbrio - Mix de Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1>Ponto de Equilíbrio - Mix de Produtos</h1>
+                <p>Análise completa com múltiplos produtos</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-title">
+                <h2>Calculadora de Ponto de Equilíbrio</h2>
+                <p>Insira os dados de cada produto e descubra a receita necessária para equilibrar seu negócio</p>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Custo Fixo Total do Mês
+                </div>
+
+                <div class="custo-fixo-input">
+                    <label class="input-label">Informe o custo fixo mensal total:</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon">R$</span>
+                        <input type="number" id="custoFixo" placeholder="Ex: 20000.00" step="0.01">
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    Dados dos Produtos
+                </div>
+
+                <div class="products-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Custo Variável Unitário (R$)</th>
+                                <th>Preço de Venda Unitário (R$)</th>
+                                <th>Quantidade Vendida</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsBody">
+                            <tr data-product="1">
+                                <td><input type="text" class="produto-nome" value="Produto 1" placeholder="Nome do produto"></td>
+                                <td><input type="number" class="cvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="pvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="qtd" placeholder="0"></td>
+                                <td>
+                                    <button class="btn-remove" onclick="removerProduto(this)">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product="2">
+                                <td><input type="text" class="produto-nome" value="Produto 2" placeholder="Nome do produto"></td>
+                                <td><input type="number" class="cvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="pvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="qtd" placeholder="0"></td>
+                                <td>
+                                    <button class="btn-remove" onclick="removerProduto(this)">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product="3">
+                                <td><input type="text" class="produto-nome" value="Produto 3" placeholder="Nome do produto"></td>
+                                <td><input type="number" class="cvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="pvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="qtd" placeholder="0"></td>
+                                <td>
+                                    <button class="btn-remove" onclick="removerProduto(this)">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product="4">
+                                <td><input type="text" class="produto-nome" value="Produto 4" placeholder="Nome do produto"></td>
+                                <td><input type="number" class="cvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="pvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="qtd" placeholder="0"></td>
+                                <td>
+                                    <button class="btn-remove" onclick="removerProduto(this)">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr data-product="5">
+                                <td><input type="text" class="produto-nome" value="Produto 5" placeholder="Nome do produto"></td>
+                                <td><input type="number" class="cvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="pvu" placeholder="0.00" step="0.01"></td>
+                                <td><input type="number" class="qtd" placeholder="0"></td>
+                                <td>
+                                    <button class="btn-remove" onclick="removerProduto(this)">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="btn-add-product" onclick="adicionarProduto()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                    Adicionar Produto
+                </button>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="calcular()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        Calcular
+                    </button>
+                    <button class="btn btn-secondary" onclick="limpar()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+            <div id="results" class="results">
+                <div class="card">
+                    <div class="section-title">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        Resultados da Análise
+                    </div>
+
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <div class="result-label">Receita Total</div>
+                            <div class="result-value" id="receitaTotal">R$ 0,00</div>
+                            <div class="result-subtitle">Faturamento do período</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-label">Margem de Contribuição</div>
+                            <div class="result-value green" id="margemContribuicao">R$ 0,00</div>
+                            <div class="result-subtitle" id="percentualMC">0% da receita</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-label">Receita do Ponto de Equilíbrio</div>
+                            <div class="result-value pink" id="receitaPE">R$ 0,00</div>
+                            <div class="result-subtitle">Meta para cobrir custos</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-label">Resultado (Lucro/Prejuízo)</div>
+                            <div class="result-value orange" id="resultado">R$ 0,00</div>
+                            <div class="result-subtitle" id="percentualResultado">0% da receita</div>
+                        </div>
+                    </div>
+
+                    <div class="dre-table">
+                        <div class="dre-title">DRE - Demonstração do Resultado do Exercício</div>
+                        <div class="dre-row">
+                            <span class="dre-label">Receita Total</span>
+                            <span class="dre-value" id="dreReceita">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(-) Custos Variáveis</span>
+                            <span class="dre-value" id="dreCustoVar">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(=) Margem de Contribuição</span>
+                            <span class="dre-value" id="dreMargem">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(-) Custos Fixos</span>
+                            <span class="dre-value" id="dreCustoFixo">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(=) Resultado</span>
+                            <span class="dre-value" id="dreResultado">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="dre-table" style="margin-top: 25px;">
+                        <div class="dre-title">DRE do Ponto de Equilíbrio</div>
+                        <div class="dre-row">
+                            <span class="dre-label">Receita do Ponto de Equilíbrio</span>
+                            <span class="dre-value" id="drePeReceita">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(-) Custo Variável no P.E.</span>
+                            <span class="dre-value" id="drePeCustoVar">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(=) Margem de Contribuição</span>
+                            <span class="dre-value" id="drePeMargem">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(-) Custos Fixos</span>
+                            <span class="dre-value" id="drePeCustoFixo">R$ 0,00</span>
+                        </div>
+                        <div class="dre-row">
+                            <span class="dre-label">(=) Resultado</span>
+                            <span class="dre-value" id="drePeResultado">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="interpretation" id="interpretation"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>© 2025 <strong>Calculadora Financeira</strong> | Análise de Ponto de Equilíbrio para Mix de Produtos</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
